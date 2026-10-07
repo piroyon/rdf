@@ -12,7 +12,7 @@ getopts('', \%OPT);
 
 !@ARGV && -t and die $USAGE;
 
-print '@prefix org: <http://mbgd.genome.ad.jp/rdf/resource/organism/> .', "\n";
+print '@prefix org: <https://mbgd.nibb.ac.jp/rdf/resource/organism/> .', "\n";
 print '@prefix taxid: <http://identifiers.org/taxonomy/> .', "\n";
 print '@prefix mbgd: <http://purl.jp/bio/11/mbgd#> .', "\n";
 print "\n";
