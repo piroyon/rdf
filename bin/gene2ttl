@@ -121,9 +121,9 @@ while (<>) {
     print OUT "    dct:identifier \"$sp:$name\" ;\n";
     print OUT "    dct:description \"$descr\" ;\n";
     if ($source eq "refseq") {
-	print OUT "    dct:source <http://www.ncbi.nlm.nih.gov/refseq> ;\n";
+	print OUT "    dct:source <https://www.ncbi.nlm.nih.gov/refseq> ;\n";
     } elsif ($source eq "gbk") {
-	print OUT "    dct:source <http://www.ncbi.nlm.nih.gov/genbank> ;\n";
+	print OUT "    dct:source <https://www.ncbi.nlm.nih.gov/genbank> ;\n";
     } elsif ($source eq "gtps") {
 	print OUT "    dct:source <http://gtps.ddbj.nig.ac.jp> ;\n";
     } else {
@@ -140,12 +140,12 @@ while (<>) {
     }
     print OUT "    mbgd:organism <$MBGD_ORGANISM/$sp> ;\n";
     if ($protid and $protid ne "NULL") {
-	print OUT "    sio:SIO_010078 <http://www.ncbi.nlm.nih.gov/protein/$protid> ;\n";
-	print OUT "    mbgd:protein <http://www.ncbi.nlm.nih.gov/protein/$protid> ;\n";
+	print OUT "    sio:SIO_010078 <https://www.ncbi.nlm.nih.gov/protein/$protid> ;\n";
+	print OUT "    mbgd:protein <https://www.ncbi.nlm.nih.gov/protein/$protid> ;\n";
 	$PROTEIN{$protid} = 1;
     } elsif ($protid_gbk and $protid_gbk ne "NULL") {
-	print OUT "    sio:SIO_010078 <http://www.ncbi.nlm.nih.gov/protein/$protid_gbk> ;\n";
-	print OUT "    rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/protein/$protid_gbk> ;\n";
+	print OUT "    sio:SIO_010078 <https://www.ncbi.nlm.nih.gov/protein/$protid_gbk> ;\n";
+	print OUT "    rdfs:seeAlso <https://www.ncbi.nlm.nih.gov/protein/$protid_gbk> ;\n";
 	$PROTEIN{$protid_gbk} = 1;
     }
     if ($gtps and $gtps ne "NULL") {
@@ -154,7 +154,7 @@ while (<>) {
     print OUT "    mbgd:nucSeq <$MBGD_NUC_SEQ/$chrid> ;\n";
     print OUT "    mbgd:aaLength \"$aalen\"^^xsd:integer ;\n" if $aalen =~ /^\d+$/;
     print OUT "    gtps:grade \"$grade\"^^xsd:string ;\n" if $grade ne "";
-    print OUT "    foaf:page <http://mbgd.genome.ad.jp/htbin/MBGD_gene_info_frame.pl?name=$sp:$name> .\n";
+    print OUT "    foaf:page <https://mbgd.nibb.ac.jp/htbin/MBGD_gene_info_frame.pl?name=$sp:$name> .\n";
     print OUT "\n";
 
     $GENE_COUNT ++;
@@ -165,10 +165,10 @@ my $PROTEIN_COUNT;
 open_new_output_file($DIR, \$INDEX, $PREFIX, \$PROTEIN_COUNT);
 for my $protein (keys %PROTEIN) {
     open_new_output_file($DIR, \$INDEX, $PREFIX, \$PROTEIN_COUNT, 4000000);
-    print OUT "<http://www.ncbi.nlm.nih.gov/protein/$protein>\n";
+    print OUT "<https://www.ncbi.nlm.nih.gov/protein/$protein>\n";
     print OUT "    a orth:Protein ;\n";
     if ($protein =~ /^(\S+)\.\d+$/) {
-	print OUT "    dct:isVersionOf <http://www.ncbi.nlm.nih.gov/protein/$1> ;\n";
+	print OUT "    dct:isVersionOf <https://www.ncbi.nlm.nih.gov/protein/$1> ;\n";
     }
     print OUT "    rdfs:seeAlso <http://identifiers.org/ncbiprotein/$protein> .\n";
     print OUT "\n";
