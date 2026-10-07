@@ -13,7 +13,7 @@ $PROGRAM DIR_GOA
 my %OPT;
 getopts('', \%OPT);
 
-my $MBGD = "http://mbgd.genome.ad.jp";
+my $MBGD = "https://mbgd.nibb.ac.jp";
 my $MBGD_DUMP = "$MBGD/rdf/archive/uniprot-goa.ttl";
 my $MBGD_DATASET = "$MBGD/rdf/resource/uniprot-goa";
 
