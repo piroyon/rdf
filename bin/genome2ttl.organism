@@ -98,7 +98,8 @@ while (<>) {
     print "    mbgd:spid \"$val{spid}\" ;\n";
     # print "    mbgd:assembly \"$ASSEMBLY{$spid}{assembly_id}\" ;\n" if defined $ASSEMBLY{$spid}{assembly_id};
     # print "    mbgd:assembly assembly:$ASSEMBLY{$spid}{assembly_id} ;\n" if defined $ASSEMBLY{$spid}{assembly_id};
-    print "    mbgd:assembly <http://www.ncbi.nlm.nih.gov/assembly/$ASSEMBLY{$spid}{assembly_id}> ;\n" if defined $ASSEMBLY{$spid}{assembly_id};
+    # print "    mbgd:assembly <http://www.ncbi.nlm.nih.gov/assembly/$ASSEMBLY{$spid}{assembly_id}> ;\n" if defined $ASSEMBLY{$spid}{assembly_id};
+	print "    mbgd:assembly <https://www.ncbi.nlm.nih.gov/datasets/genome/$ASSEMBLY{$spid}{assembly_id}/> ;\n" if defined $ASSEMBLY{$spid}{assembly_id};
     print "    mbgd:assemblyLevel \"$ASSEMBLY{$spid}{assembly_level}\" ;\n" if defined $ASSEMBLY{$spid}{assembly_level};
     print "    mbgd:assemblyTotalLength $ASSEMBLY{$spid}{total_length} ;\n" if defined $ASSEMBLY{$spid}{total_length} and $ASSEMBLY{$spid}{total_length} ne "NULL";
     print "    mbgd:assemblyTotalGapLength $ASSEMBLY{$spid}{total_gap_length} ;\n" if defined $ASSEMBLY{$spid}{total_gap_length} and $ASSEMBLY{$spid}{total_gap_length} ne "NULL";
