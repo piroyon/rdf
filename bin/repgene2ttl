@@ -15,11 +15,11 @@ my $RELEASE_DATE_NUM = $OPT{r} || die $USAGE;
 
 !@ARGV && -t and die $USAGE;
 
-my $GENE = "http://mbgd.genome.ad.jp/rdf/resource/gene/";
+my $GENE = "https://mbgd.nibb.ac.jp/rdf/resource/gene/";
 my $CLUSTER = "cluster:2018-01_";
 
 print '@prefix mbgd: <http://purl.jp/bio/11/mbgd#> .', "\n";
-print '@prefix cluster: <http://mbgd.genome.ad.jp/rdf/resource/cluster/> .', "\n";
+print '@prefix cluster: <https://mbgd.nibb.ac.jp/rdf/resource/cluster/> .', "\n";
 print "\n";
 ### Read ###
 while (<>) {
@@ -43,6 +43,6 @@ sub get_gene_uri {
 	my ($taxid, $clustid) = ($1, $2);
 	return "cluster:${RELEASE_DATE_NUM}_${taxid}_$clustid";
     } else {
-        return "<http://mbgd.genome.ad.jp/rdf/resource/gene/$gene>";
+        return "<https://mbgd.nibb.ac.jp/rdf/resource/gene/$gene>";
     }
 }
