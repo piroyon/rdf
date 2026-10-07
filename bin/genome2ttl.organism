@@ -89,7 +89,7 @@ while (<>) {
     print "    dct:identifier \"$val{sp}\" ;\n";
     print "    dct:issued \"$val{date_release}\"^^xsd:date ;\n";
     #print "    dct:references <http://www.ncbi.nlm.nih.gov/pubmed/$val{medid}> ;\n" if $val{medid} ;
-	print "    dct:references http://identifiers.org/pubmed/$val{medid} ;\n" if $val{medid} ;
+	print "    dct:references <http://identifiers.org/pubmed/$val{medid}> ;\n" if $val{medid} ;
     print "    mbgd:abbrev \"$val{abbrev}\" ;\n";
     print "    mbgd:family \"$val{tax_family}\" ;\n";
     print "    mbgd:genus \"$val{tax_genus}\" ;\n";
