@@ -34,7 +34,7 @@ if ($OPT{g}) {
 
 !@ARGV && -t and die $USAGE;
 
-my $MBGD = "http://mbgd.genome.ad.jp";
+my $MBGD = "https://mbgd.nibb.ac.jp";
 # my $MBGD_DATASET = "$MBGD/rdf/resource/${RELEASE_DATE_NUM}_gene";
 my $MBGD_DATASET = "$MBGD/rdf/resource/gene";
 my $MBGD_DUMP = "$MBGD/rdf/archive/mbgd_${RELEASE_DATE_NUM}/mbgd_${RELEASE_DATE_NUM}_gene.ttl.gz";
