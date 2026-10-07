@@ -17,7 +17,7 @@ getopts('r:t:D:R:T:', \%OPT);
 my $RELEASE_DATE_NUM = $OPT{r} || die $USAGE;
 my $TABLE_NAME = $OPT{t} || die $USAGE;
 
-my $MBGD = "http://mbgd.genome.ad.jp";
+my $MBGD = "https://mbgd.nibb.ac.jp";
 my $MBGD_DUMP = "$MBGD/rdf/archive/mbgd_${RELEASE_DATE_NUM}/mbgd_${RELEASE_DATE_NUM}_${TABLE_NAME}.ttl.gz";
 if ($OPT{R}) {
     $MBGD_DUMP = "$MBGD/rdf/archive/${RELEASE_DATE_NUM}/tax_og/$OPT{R}/${TABLE_NAME}.ttl";
