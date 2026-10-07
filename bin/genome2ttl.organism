@@ -14,7 +14,7 @@ getopts('r:a:A:', \%OPT);
 
 my $RELEASE_DATE_NUM = $OPT{r} || die $USAGE;
 
-my $MBGD = "http://mbgd.genome.ad.jp";
+my $MBGD = "https://mbgd.nibb.ac.jp";
 # my $MBGD_DATASET = "$MBGD/rdf/resource/${RELEASE_DATE_NUM}_organism";
 my $MBGD_DATASET = "$MBGD/rdf/resource/organism";
 my $MBGD_DUMP = "$MBGD/rdf/archive/mbgd_${RELEASE_DATE_NUM}/mbgd_${RELEASE_DATE_NUM}_organism.ttl.gz";
@@ -88,7 +88,8 @@ while (<>) {
     print "    rdfs:label \"$description\" ;\n";
     print "    dct:identifier \"$val{sp}\" ;\n";
     print "    dct:issued \"$val{date_release}\"^^xsd:date ;\n";
-    print "    dct:references <http://www.ncbi.nlm.nih.gov/pubmed/$val{medid}> ;\n" if $val{medid} ;
+    #print "    dct:references <http://www.ncbi.nlm.nih.gov/pubmed/$val{medid}> ;\n" if $val{medid} ;
+	print "    dct:references http://identifiers.org/pubmed/$val{medid} ;\n" if $val{medid} ;
     print "    mbgd:abbrev \"$val{abbrev}\" ;\n";
     print "    mbgd:family \"$val{tax_family}\" ;\n";
     print "    mbgd:genus \"$val{tax_genus}\" ;\n";
