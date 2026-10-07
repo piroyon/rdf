@@ -61,11 +61,11 @@ while (<>) {
 
     my $source_uri;
     if ($source eq "refseq") {
-	$source_uri = "<http://www.ncbi.nlm.nih.gov/refseq>";
+	$source_uri = "<https://www.ncbi.nlm.nih.gov/refseq>";
     } elsif ($source eq "gbk") {
-	$source_uri = "<http://www.ncbi.nlm.nih.gov/genbank>";
+	$source_uri = "<https://www.ncbi.nlm.nih.gov/genbank>";
     } elsif ($source eq "gtps") {
-	$source_uri = "<http://gtps.ddbj.nig.ac.jp>";
+	$source_uri = "<https://gtps.ddbj.nig.ac.jp>";
     } else {
 	die $source;
     }
