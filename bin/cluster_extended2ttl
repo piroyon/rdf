@@ -12,7 +12,7 @@ getopts('', \%OPT);
 
 !@ARGV && -t and die $USAGE;
 
-my $GENE = "http://mbgd.genome.ad.jp/rdf/resource/gene/";
+my $GENE = "https://mbgd.nibb.ac.jp/rdf/resource/gene/";
 my $CLUSTER = "cluster:2018-01_";
 
 ### Read ###
