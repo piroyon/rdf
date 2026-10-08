@@ -46,10 +46,10 @@ if ($TABLE_NAME =~ /^tax(\d+)$/) {
 }
 print '@prefix orth: <http://purl.org/net/orth#> .' . "\n";
 print '@prefix mbgd: <http://purl.jp/bio/11/mbgd#> .' . "\n";
-print '@prefix mbgdr: <http://mbgd.genome.ad.jp/rdf/resource/> .' . "\n";
-print '@prefix cluster: <http://mbgd.genome.ad.jp/rdf/resource/cluster/> .' . "\n";
-# print '@prefix gene: <http://mbgd.genome.ad.jp/rdf/resource/gene/> .' . "\n";
-print '@prefix org: <http://mbgd.genome.ad.jp/rdf/resource/organism/> .' . "\n";
+print '@prefix mbgdr: <https://mbgd.nibb.ac.jp/rdf/resource/> .' . "\n";
+print '@prefix cluster: <https://mbgd.nibb.ac.jp/rdf/resource/cluster/> .' . "\n";
+# print '@prefix gene: <https://mbgd.nibb.ac.jp/rdf/resource/gene/> .' . "\n";
+print '@prefix org: <https://mbgd.nibb.ac.jp/rdf/resource/organism/> .' . "\n";
 print "\n";
 
 print "mbgdr:${TABLE_NAME}\n";
@@ -73,7 +73,7 @@ print "    taxont:rank taxont:", ucfirst($OPT{R}), " ;\n" if $OPT{R};
 if ($TABLE_NAME =~ /^tax(\d+)$/) {
     print "    obo:RO_0002162 taxid:$1 ;\n";
 }
-print "    foaf:page <http://mbgd.genome.ad.jp/htbin/cluster_map?tabid=${TABLE_NAME}&show_summary=1>";
+print "    foaf:page <https://mbgd.nibb.ac.jp/htbin/cluster_map?tabid=${TABLE_NAME}&show_summary=1>";
 if ($TABLE_NAME eq "default") {
     print " .\n";
     print "\n";
@@ -201,7 +201,7 @@ for my $homcluster (@HOMCLUSTER) {
 	    print "    mbgd:score \"$CLUSTER{$cluster}{score}\"^^xsd:decimal ;\n" if defined $CLUSTER{$cluster}{score};
 	    print "    mbgd:dist \"$CLUSTER{$cluster}{dist}\"^^xsd:decimal ;\n" if defined $CLUSTER{$cluster}{dist};
 	    if ($TABLE_NAME eq "default") {
-		print "    foaf:page <http://mbgd.genome.ad.jp/htbin/hcluster?prog=hcluster&clustid=O${cluster}&tabid=default> ;\n";
+		print "    foaf:page <https://mbgd.nibb.ac.jp/htbin/hcluster?prog=hcluster&clustid=O${cluster}&tabid=default> ;\n";
 	    }
 	    # print "    mbgd:memberCount $CLUSTER{$cluster}{size} ;\n";
 	    print "    orth:hasHomologousMember\n";
@@ -303,6 +303,6 @@ sub get_gene_uri {
 	return "cluster:${RELEASE_DATE_NUM}_${taxid}_$clustid";
     } else {
 	# return "gene:$gene";
-	return "<http://mbgd.genome.ad.jp/rdf/resource/gene/$gene>";
+	return "<https://mbgd.nibb.ac.jp/rdf/resource/gene/$gene>";
     }
 }
