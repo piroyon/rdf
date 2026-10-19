@@ -4,16 +4,19 @@ use File::Basename;
 use Getopt::Std;
 my $PROGRAM = basename $0;
 my $USAGE=
-"Usage: $PROGRAM
+"Usage: $PROGRAM -r RELEASE_DATE_NUM
+ex) -r 2018-01
 ";
 
 my %OPT;
-getopts('', \%OPT);
+getopts('r:', \%OPT);
+
+my $RELEASE_DATE_NUM = $OPT{r} || die $USAGE;
 
 !@ARGV && -t and die $USAGE;
 
 my $GENE = "https://mbgd.nibb.ac.jp/rdf/resource/gene/";
-my $CLUSTER = "cluster:2018-01_";
+my $CLUSTER = "cluster:${RELEASE_DATE_NUM}_";
 
 ### Read ###
 my @HEADER = ();

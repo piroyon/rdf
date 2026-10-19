@@ -16,7 +16,7 @@ my $RELEASE_DATE_NUM = $OPT{r} || die $USAGE;
 !@ARGV && -t and die $USAGE;
 
 my $GENE = "https://mbgd.nibb.ac.jp/rdf/resource/gene/";
-my $CLUSTER = "cluster:2018-01_";
+my $CLUSTER = "cluster:${RELEASE_DATE_NUM}_";
 
 print '@prefix mbgd: <http://purl.jp/bio/11/mbgd#> .', "\n";
 print '@prefix cluster: <https://mbgd.nibb.ac.jp/rdf/resource/cluster/> .', "\n";
