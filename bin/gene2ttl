@@ -79,6 +79,9 @@ print OUT "\n";
 
 my %NCOL = ();
 my %PROTEIN = ();
+my @SP_LINES = ();
+my $CUR_SP;
+my %SP_DONE = ();
 while (<>) {
     chomp;
     my @x = split("\t", $_);
@@ -91,6 +94,67 @@ while (<>) {
 	next;
     }
 
+    ### buffer the lines of one species (needed to compute gene order)
+    my ($sp) = get_values($_, "sp");
+    if (!defined($CUR_SP) or $sp ne $CUR_SP) {
+	print_species(\@SP_LINES);
+	if ($SP_DONE{$sp}) {
+	    die "ERROR: genes of $sp are not contiguous in the input\n";
+	}
+	$SP_DONE{$sp} = 1;
+	$CUR_SP = $sp;
+    }
+    push @SP_LINES, $_;
+}
+print_species(\@SP_LINES);
+
+# print STDERR "Creating RDF for proteins..\n";
+my $PROTEIN_COUNT;
+open_new_output_file($DIR, \$INDEX, $PREFIX, \$PROTEIN_COUNT);
+for my $protein (keys %PROTEIN) {
+    open_new_output_file($DIR, \$INDEX, $PREFIX, \$PROTEIN_COUNT, 4000000);
+    print OUT "<https://www.ncbi.nlm.nih.gov/protein/$protein>\n";
+    print OUT "    a orth:Protein ;\n";
+    if ($protein =~ /^(\S+)\.\d+$/) {
+	print OUT "    dct:isVersionOf <https://www.ncbi.nlm.nih.gov/protein/$1> ;\n";
+    }
+    print OUT "    rdfs:seeAlso <http://identifiers.org/ncbiprotein/$protein> .\n";
+    print OUT "\n";
+    $PROTEIN_COUNT ++;
+}
+
+################################################################################
+### Function ###################################################################
+################################################################################
+
+### Gene order: serial number within a species, sorted by chrid, from1, to1
+sub print_species {
+    my ($r_lines) = @_;
+
+    my @genes = ();
+    for my $line (@{$r_lines}) {
+	my ($name, $chrid, $from, $to) = get_values($line, "name", "chrid", "from1", "to1");
+	unless ($from && $to) {
+	    print STDERR "WARNING: no location: $line\n";
+	    next;
+	}
+	push @genes, [$line, $chrid, $from, $to, $name];
+    }
+
+    my $order = 0;
+    for my $g (sort { $a->[1] <=> $b->[1] or $a->[2] <=> $b->[2] or
+		      $a->[3] <=> $b->[3] or $a->[4] cmp $b->[4] } @genes) {
+	$order ++;
+	print_gene($g->[0], $order);
+    }
+
+    @{$r_lines} = ();
+}
+
+sub print_gene {
+    my ($line, $order) = @_;
+    local $_ = $line;
+
     ### get values
     my ($sp, $name, $gene, $descr, $type, $protid, $from, $to, $dir, $aalen) = get_values
 	($_, "sp", "name", "gene", "descr", "type", "protid", "from1", "to1", "dir", "aalen");
@@ -98,10 +162,6 @@ while (<>) {
 	($_, "chrid", "protid_gbk", "source", "gtps_name", "grade");
 
     ### error handling
-    unless ($from && $to) {
-	print STDERR "WARNING: no location: $_\n";
-	next;
-    }
     if ($name =~ />/) {
 	print STDERR "WARNING: invalid character '>' in gene name: $_\n";
 	# next;
@@ -154,30 +214,15 @@ while (<>) {
     print OUT "    mbgd:nucSeq <$MBGD_NUC_SEQ/$chrid> ;\n";
     print OUT "    mbgd:aaLength \"$aalen\"^^xsd:integer ;\n" if $aalen =~ /^\d+$/;
     print OUT "    gtps:grade \"$grade\"^^xsd:string ;\n" if $grade ne "";
+    print OUT "    mbgd:begin $from ;\n";
+    print OUT "    mbgd:end $to ;\n";
+    print OUT "    mbgd:strand \"$dir\" ;\n";
+    print OUT "    mbgd:geneOrder \"$order\"^^xsd:integer ;\n";
     print OUT "    foaf:page <https://mbgd.nibb.ac.jp/htbin/MBGD_gene_info_frame.pl?name=$sp:$name> .\n";
     print OUT "\n";
 
     $GENE_COUNT ++;
 }
-
-# print STDERR "Creating RDF for proteins..\n";
-my $PROTEIN_COUNT;
-open_new_output_file($DIR, \$INDEX, $PREFIX, \$PROTEIN_COUNT);
-for my $protein (keys %PROTEIN) {
-    open_new_output_file($DIR, \$INDEX, $PREFIX, \$PROTEIN_COUNT, 4000000);
-    print OUT "<https://www.ncbi.nlm.nih.gov/protein/$protein>\n";
-    print OUT "    a orth:Protein ;\n";
-    if ($protein =~ /^(\S+)\.\d+$/) {
-	print OUT "    dct:isVersionOf <https://www.ncbi.nlm.nih.gov/protein/$1> ;\n";
-    }
-    print OUT "    rdfs:seeAlso <http://identifiers.org/ncbiprotein/$protein> .\n";
-    print OUT "\n";
-    $PROTEIN_COUNT ++;
-}
-
-################################################################################
-### Function ###################################################################
-################################################################################
 
 sub current_date_time {
 
