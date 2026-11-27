@@ -19,122 +19,122 @@
     owl:imports <http://purl.jp/bio/11/orth> ,
     		<http://purl.uniprot.org/core/> .
 
-:CDS
+:CDS 
     a owl:Class ;
     rdfs:label "CDS" ;
     rdfs:subClassOf orth:Gene ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:tRNA
+:tRNA 
     a owl:Class ;
     rdfs:label "tRNA" ;
     rdfs:subClassOf orth:Gene ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:rRNA
+:rRNA 
     a owl:Class ;
     rdfs:label "rRNA" ;
     rdfs:subClassOf orth:Gene ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:ncRNA
+:ncRNA 
     a owl:Class ;
     rdfs:label "ncRNA" ;
     rdfs:subClassOf orth:Gene ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:tmRNA
+:tmRNA 
     a owl:Class ;
     rdfs:label "tmRNA" ;
     rdfs:subClassOf orth:Gene ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:snoRNA
+:snoRNA 
     a owl:Class ;
     rdfs:label "snoRNA" ;
     rdfs:subClassOf orth:Gene ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:misc_RNA
+:misc_RNA 
     a owl:Class ;
     rdfs:label "misc_RNA" ;
     rdfs:subClassOf orth:Gene ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:Domain
+:Domain 
     a owl:Class ;
     rdfs:label "Domain" ;
     rdfs:subClassOf orth:SequenceUnit ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:NucSeq
+:NucSeq 
     a owl:Class ;
     rdfs:label "NucSeq" ;
     rdfs:subClassOf orth:Resource ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:Chromosome
+:Chromosome 
     a owl:Class ;
     rdfs:label "Chromosome" ;
     rdfs:subClassOf :NucSeq ;
     rdfs:subClassOf obo:SO_0000340 ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:Contig
+:Contig 
     a owl:Class ;
     rdfs:label "Contig" ;
     rdfs:subClassOf :NucSeq ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:Plasmid
+:Plasmid 
     a owl:Class ;
     rdfs:label "Plasmid" ;
     rdfs:subClassOf :NucSeq ;
     rdfs:subClassOf obo:SO_0000155 ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:Mitochondrion
+:Mitochondrion 
     a owl:Class ;
     rdfs:label "Mitochondrion" ;
     rdfs:subClassOf :NucSeq ;
     rdfs:subClassOf obo:SO_0001032 ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:NucShape
+:NucShape 
     a owl:Class ;
     rdfs:label "NucShape" ;
     rdfs:subClassOf orth:Resource ;
     rdfs:subClassOf obo:SO_0000443 ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:Linear
+:Linear 
     a owl:Class ;
     rdfs:label "Linear" ;
     rdfs:subClassOf :Shape ;
     owl:equivalentClass obo:SO_0000987 ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:Circular
+:Circular 
     a owl:Class ;
     rdfs:label "Circular" ;
     rdfs:subClassOf :Shape ;
     owl:equivalentClass obo:SO_0000988 ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:gtps
+:gtps 
     a owl:ObjectProperty ;
     rdfs:label "gtps" ;
     rdfs:subPropertyOf orth:gene ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:uniprot
+:uniprot 
     a owl:ObjectProperty ;
     rdfs:label "uniprot" ;
     rdfs:subPropertyOf orth:protein ;
     rdfs:range up:Protein ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:domain
+:domain 
     a owl:ObjectProperty ;
     rdfs:label "domain" ;
     rdfs:domain orth:Gene ;
@@ -145,7 +145,7 @@
     rdfs:subPropertyOf sio:SIO_000974 ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:nucSeq
+:nucSeq 
     a owl:ObjectProperty ;
     rdfs:label "genome" ;
     rdfs:domain orth:Resource ;
@@ -153,7 +153,7 @@
     rdfs:subPropertyOf orth:reference ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:score
+:score 
     a owl:DatatypeProperty ;
     rdfs:label "score" ;
     rdfs:domain orth:OrthologGroup ;
@@ -161,7 +161,7 @@
     rdfs:subPropertyOf orth:groupScore ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:dist
+:dist 
     a owl:DatatypeProperty ;
     rdfs:label "dist" ;
     rdfs:domain orth:OrthologGroup ;
@@ -169,7 +169,7 @@
     rdfs:subPropertyOf orth:groupScore ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:funcCategory
+:funcCategory 
     a owl:DatatypeProperty ;
     rdfs:label "funcCategory" ;
     rdfs:domain orth:OrthologGroup ;
@@ -177,7 +177,7 @@
     rdfs:subPropertyOf orth:groupValue ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:funcMbgd
+:funcMbgd 
     a owl:DatatypeProperty ;
     rdfs:label "funcMbgd" ;
     rdfs:domain orth:OrthologGroup ;
@@ -185,7 +185,7 @@
     rdfs:subPropertyOf :funcCategory ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:funcCog
+:funcCog 
     a owl:DatatypeProperty ;
     rdfs:label "funcCog" ;
     rdfs:domain orth:OrthologGroup ;
@@ -193,7 +193,7 @@
     rdfs:subPropertyOf :funcCategory ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:funcKegg
+:funcKegg 
     a owl:DatatypeProperty ;
     rdfs:label "funcKegg" ;
     rdfs:domain orth:OrthologGroup ;
@@ -201,7 +201,7 @@
     rdfs:subPropertyOf :funcCategory ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:funcTigr
+:funcTigr 
     a owl:DatatypeProperty ;
     rdfs:label "funcTigr" ;
     rdfs:domain orth:OrthologGroup ;
@@ -209,7 +209,7 @@
     rdfs:subPropertyOf :funcCategory ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:geneValue
+:geneValue 
     a owl:DatatypeProperty ;
     rdfs:label "geneValue" ;
     rdfs:domain orth:Gene ;
@@ -217,7 +217,7 @@
     rdfs:subPropertyOf orth:value ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:aaLength
+:aaLength 
     a owl:DatatypeProperty ;
     rdfs:label "aaLength" ;
     rdfs:domain orth:Gene ;
@@ -226,7 +226,45 @@
     rdfs:subPropertyOf sio:SIO_000041 ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:domainValue
+:begin 
+    a owl:DatatypeProperty ;
+    rdfs:label "begin" ;
+    rdfs:comment "Start position of the gene on the nucleotide sequence (mbgd:nucSeq)." ;
+    rdfs:domain orth:Gene ;
+    rdfs:range xsd:integer ;
+    rdfs:subPropertyOf :geneValue ;
+    rdfs:subPropertyOf sio:SIO_000791 ;
+    rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
+
+:end 
+    a owl:DatatypeProperty ;
+    rdfs:label "end" ;
+    rdfs:comment "End position of the gene on the nucleotide sequence (mbgd:nucSeq)." ;
+    rdfs:domain orth:Gene ;
+    rdfs:range xsd:integer ;
+    rdfs:subPropertyOf :geneValue ;
+    rdfs:subPropertyOf sio:SIO_000792 ;
+    rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
+
+:strand 
+    a owl:DatatypeProperty ;
+    rdfs:label "strand" ;
+    rdfs:comment "Strand of the gene on the nucleotide sequence: \"1\" (forward) or \"-1\" (reverse)." ;
+    rdfs:domain orth:Gene ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf :geneValue ;
+    rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
+
+:geneOrder 
+    a owl:DatatypeProperty ;
+    rdfs:label "geneOrder" ;
+    rdfs:comment "Serial number of the gene within the organism, ordered by nucleotide sequence and start position." ;
+    rdfs:domain orth:Gene ;
+    rdfs:range xsd:integer ;
+    rdfs:subPropertyOf :geneValue ;
+    rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
+
+:domainValue 
     a owl:DatatypeProperty ;
     rdfs:label "domainValue" ;
     rdfs:domain :Domain ;
@@ -234,7 +272,7 @@
     rdfs:subPropertyOf orth:value ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:domainPosition
+:domainPosition 
     a owl:DatatypeProperty ;
     rdfs:label "domainPosition" ;
     rdfs:domain :Domain ;
@@ -243,7 +281,7 @@
     rdfs:subPropertyOf sio:SIO_000789 ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:domainBegin
+:domainBegin 
     a owl:DatatypeProperty ;
     rdfs:label "domainBegin" ;
     rdfs:domain :Domain ;
@@ -252,7 +290,7 @@
     rdfs:subPropertyOf sio:SIO_000791 ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:domainEnd
+:domainEnd 
     a owl:DatatypeProperty ;
     rdfs:label "domainEnd" ;
     rdfs:domain :Domain ;
@@ -261,14 +299,14 @@
     rdfs:subPropertyOf sio:SIO_000792 ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:organismValue
+:organismValue 
     a owl:DatatypeProperty ;
     rdfs:label "organismValue" ;
     rdfs:domain orth:Organism ;
     rdfs:subPropertyOf orth:value ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:family
+:family 
     a owl:DatatypeProperty ;
     rdfs:label "family" ;
     rdfs:domain orth:Organism ;
@@ -276,7 +314,7 @@
     rdfs:subPropertyOf :organismValue ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:genus
+:genus 
     a owl:DatatypeProperty ;
     rdfs:label "genus" ;
     rdfs:domain orth:Organism ;
@@ -284,7 +322,7 @@
     rdfs:subPropertyOf :organismValue ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:species
+:species 
     a owl:DatatypeProperty ;
     rdfs:label "species" ;
     rdfs:domain orth:Organism ;
@@ -292,7 +330,7 @@
     rdfs:subPropertyOf :organismValue ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:strain
+:strain 
     a owl:DatatypeProperty ;
     rdfs:label "strain" ;
     rdfs:domain orth:Organism ;
@@ -300,7 +338,7 @@
     rdfs:subPropertyOf :organismValue ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:nucSeqValue
+:nucSeqValue 
     a owl:DatatypeProperty ;
     rdfs:label "nucSeqValue" ;
     rdfs:domain :NucSeq ;
@@ -308,7 +346,7 @@
     rdfs:subPropertyOf orth:value ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:nucLength
+:nucLength 
     a owl:DatatypeProperty ;
     rdfs:label "nucLength" ;
     rdfs:domain :NucSeq ;
@@ -317,7 +355,7 @@
     rdfs:subPropertyOf sio:SIO_000041 ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:geneCount
+:geneCount 
     a owl:DatatypeProperty ;
     rdfs:label "geneCount" ;
     rdfs:domain :NucSeq ;
@@ -325,21 +363,21 @@
     rdfs:subPropertyOf :nucSeqValue ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:repGene
+:repGene 
     a owl:DatatypeProperty ;
     rdfs:label "repGene" ;
     rdfs:domain :orth:OrthologGroup ;
     rdfs:range xsd:string ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:taxonShown
+:taxonShown 
     a owl:DatatypeProperty ;
     rdfs:label "taxonShown" ;
     rdfs:domain orth:Organism ;
     rdfs:range xsd:string ;
     rdfs:isDefinedBy <http://purl.jp/bio/11/mbgd> .
 
-:parentTaxonShown
+:parentTaxonShown 
     a owl:DatatypeProperty ;
     rdfs:label "parentTaxonShown" ;
     rdfs:domain orth:Organism ;
